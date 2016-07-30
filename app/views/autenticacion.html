@@ -1,1 +1,36 @@
-<h1>Auth</h1>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Form Name</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Usuario</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" ng-model='usuario' type="text" placeholder="correo" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Contraseña</label>
+  <div class="col-md-4">
+    <input id="passwordinput" name="passwordinput" type="password" ng-model='pass' placeholder="clave secreta" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton">Login</label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" ng-click="loginUsuario(usuario,pass)" class="btn btn-primary">Entrar</button>
+    <button id="singlebutton" name="singlebutton" ng-show='firebaseUser' ng-click="logOut()" class="btn btn-danger">Log Out</button>
+    <button id="singlebutton" name="singlebutton" ng-click="crearUsuario(usuario,pass)" class="btn btn-success">Crear Usuario</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
