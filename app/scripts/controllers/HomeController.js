@@ -7,6 +7,21 @@ angular.module('workshopApp').controller('HomeController', ['$firebaseObject','$
 
     objFirebase.$value = 'Hola Mundo'; //Creo un primer valor de prueba
     objFirebase.$save();
-    
+
+    var refTutorial = firebase.database().ref().child('tutorial');
+    var objFirebaseTutorial = $firebaseObject(refTutorial);
+    objFirebaseTutorial.$value = {
+    	'config' : {
+    		'fecha' : '2016-07-30',
+    		'asistentes' : '100',
+    		'hora' : '16:00'
+    	}
+    };
+    objFirebaseTutorial.$save();
+
+
+
+    $scope.config = objFirebaseTutorial;
+
 
 }]);
