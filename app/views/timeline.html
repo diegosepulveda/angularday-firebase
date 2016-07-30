@@ -48,9 +48,17 @@
 				</div>
 			<!-- Button -->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="singlebutton">Ingresar</label>
-			  <div class="col-md-4">
-			    <button id="singlebutton" name="singlebutton" ng-click="crear(titulo,contenido,color)" class="btn btn-success">Crear</button>
+			  <div class="col-md-3">
+			    <button id="singlebutton" name="singlebutton" ng-click="crear(titulo,contenido,color)" ng-hide="edicionEvento" class="btn btn-primary">Crear</button>
+			  </div>
+			  <div class="col-md-3">
+			    <button id="singlebutton" name="singlebutton" ng-click="guardar(titulo,contenido,color)" ng-show="edicionEvento" class="btn btn-success">Guardar</button>
+			  </div>
+			  <div class="col-md-3">
+			    <button id="singlebutton" name="singlebutton" ng-click="cancelarEdicion()" ng-show="edicionEvento" class="btn btn-warning">Cancelar</button>
+			  </div>
+			   <div class="col-md-3">
+			    <button id="singlebutton" name="singlebutton" ng-click="borrar()" ng-show="edicionEvento" class="btn btn-danger">Borrar</button>
 			  </div>
 			</div>
 
@@ -62,7 +70,7 @@
 
 <timeline>
     <timeline-event ng-repeat="event in listaTimeline" side="right">
-      <timeline-badge class="{{event.badgeClass}}">
+      <timeline-badge class="{{event.badgeClass}}" ng-click="editarEvento(event)">
         <i class="glyphicon {{event.badgeIconClass}}"></i>
       </timeline-badge>
       <timeline-panel class="{{event.badgeClass}}">
