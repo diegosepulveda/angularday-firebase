@@ -1,6 +1,15 @@
 'use strict';
-angular.module('workshopApp').controller('TimelineController', ['$scope','$firebaseArray',function ($scope,$firebaseArray) {
+angular.module('workshopApp').controller('TimelineController', ['$scope','$firebaseArray','$firebaseAuth','$state',function ($scope,$firebaseArray,$firebaseAuth,$state) {
+    var objAutenticacion = $firebaseAuth();
 
+    objAutenticacion.$onAuthStateChanged(function(usuario) {
+      if (usuario) {
+        console.log("Logeado como:", usuario);
+        $scope.usuario = usuario;
+      } else {
+        $state.go('home');
+      }
+    });
 
 	// $add()
 	// $save()
@@ -29,6 +38,7 @@ angular.module('workshopApp').controller('TimelineController', ['$scope','$fireb
     $scope.crear = function(titulo,contenido,color)
     {
     	$scope.listaTimeline.$add({
+            id : $scope.usuario.uid,
     		badgeClass: color,
 		    badgeIconClass: 'glyphicon-check',
 		    title: titulo,
